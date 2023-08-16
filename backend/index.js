@@ -3,9 +3,8 @@ const connectDB = require('./db');
 connectDB();
 const app = express();
 
-app.get('/', (req, res)=>{
-    res.send("Welcome");
-})
+app.use('/api/form',require("./routers/form"));
+
 app.listen(5000,()=>{
     console.log("Connected to port 5000");
 })

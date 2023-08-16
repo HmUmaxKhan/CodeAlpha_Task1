@@ -1,75 +1,75 @@
-const Schema = require('Schema');
-const { default: mongoose } = require('mongoose');
+const { Schema } = require('mongoose');
+const mongoose = require('mongoose');
 
-const formSchema = new Schema(
-    name = {
-        type : String,
-        required : true,
-    },
-    email = {
+const formSchema = new Schema({
+    name: {
         type: String,
-        required : true,
-        unique : true
+        required: true,
     },
-    password = {
+    email: {
         type: String,
-        required : true,
+        required: true,
+        unique: true
     },
-    fullname = {
+    password: {
         type: String,
-        required : true,
+        required: true,
     },
-    phone = {
+    fullname: {
+        type: String,
+        required: true,
+    },
+    phone: {
         type: Number,
-        required : true,
+        required: true,
     },
-    gender = {
+    gender: {
         type: String,
-        required : true,
+        required: true,
     },
-    age = {
+    age: {
         type: Number,
-        required : true,
+        required: true,
     },
-    dateOfBirth = {
+    dateOfBirth: {
         type: String,
-        required : true,
+        required: true,
     },
-    address = {
+    address: {
         type: String,
-        required : true,
+        required: true,
     },
-    yourSelf = {
+    yourSelf: {
         type: String,
-        required : true,
+        required: true,
     },
-    university = {
+    university: {
         type: String,
-        required : true,
+        required: true,
     },
-    semester = {
+    semester: {
         type: Number,
-        required : true,
+        required: true,
     },
-    hobbies = {
-        type : String,
-        required : true,
+    hobbies: {
+        type: String,
+        required: true,
     },
-    skills = {
-        type : String,
-        required : true,
+    skills: {
+        type: String,
+        required: true,
     },
-    experience = {
+    experience: {
         type: String
     },
-    language = {
+    language: {
         type: String
     },
-    date = {
-      type: Date,
-      default : new Date()
+    date: {
+        type: Date,
+        default: Date.now
     }
-);
+});
 
-const User = new mongoose.model("user",formSchema);
+const User = mongoose.model("user", formSchema);
 module.exports = User;

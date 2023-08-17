@@ -15,19 +15,7 @@ const formSchema = new Schema({
         type: String,
         
     },
-    fullname: {
-        type: String,
-         
-    },
     phone: {
-        type: String,
-        
-    },
-    gender: {
-        type: String,
-        
-    },
-    age: {
         type: String,
         
     },
@@ -39,10 +27,6 @@ const formSchema = new Schema({
         type: String,
         
     },
-    yourSelf: {
-        type: String,
-        
-    },
     university: {
         type: String,
         
@@ -51,19 +35,9 @@ const formSchema = new Schema({
         type: String,
         
     },
-    hobbies: {
-        type: String,
-        
-    },
     skills: {
         type: String,
         
-    },
-    experience: {
-        type: String
-    },
-    language: {
-        type: String
     },
     date: {
         type: Date,

@@ -22,8 +22,8 @@ router.post(
        return res.status(400).json({ errors: errors.array() });
     }
 
-    const {name,email,password,fullname,phone,gender,age,dateOfBirth,
-    address,yourSelf,university,semester,hobbies,skills,experience,language} = req.body;
+    const {name,email,password,fullname,phone,dateOfBirth,
+    address,university,semester,skills} = req.body;
 
     try {
       let user = await User.findOne({email: req.body.email});
@@ -32,8 +32,8 @@ router.post(
         return res.status(400).json("User already exits");
       }
     
-    let user1 = new User({name: name, email:email,password:password,fullname:fullname,phone:phone,gender:gender,age:age,dateOfBirth:dateOfBirth,
-    address:address,yourSelf:yourSelf,university:university,semester:semester,hobbies:hobbies,skills:skills,experience:experience,language:language}) 
+    let user1 = new User({name: name, email:email,password:password,fullname:fullname,phone:phone,dateOfBirth:dateOfBirth,
+    address:address,university:university,semester:semester,skills:skills}) 
 
     await user1.save();
     

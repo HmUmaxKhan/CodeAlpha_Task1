@@ -1,8 +1,20 @@
 import React from 'react'
 import "./Signup.css"
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from 'react-redux';
+import { actionCreators } from '../Redux Store/index';
+import { useSelector } from 'react-redux';
+
 function Personal() {
     let navigate = useNavigate();
+
+    const personalInfo = useSelector(state=>state.reducer2);
+    const dispatch = useDispatch();
+
+    const handleChange= (event) => {
+      dispatch(actionCreators.setPersonalInfo({[event.target.name]: event.target.value}));
+     }
+
   return (
     <div>
     <div className="container">
@@ -10,18 +22,18 @@ function Personal() {
          <h2> Personal Info </h2>
          <form action="/personal" className="submit-data">
           <div className="input-box">
-            <input type='number' id="phone" required/>
+            <input type='number' id="phone" name='phone' onChange={handleChange} required/>
             <label htmlFor="phone">Phone Number</label>
           </div>
           <div className="input-box">
-            <input type='text' id="dateOfBirth" required/>
+            <input type='text' id="dateOfBirth" name='dateOfBirth' onChange={handleChange} required/>
             <label htmlFor="dateOfBirth">Date of Birth</label>
           </div>
           <div className="input-box">
-            <input type='text' id="address" required/>
+            <input type='text' name='address' id="address" onChange={handleChange} required/>
             <label htmlFor="address">Address</label>
           </div>
-          <button className="btn" onClick={()=>{navigate('/education')}}>Next</button>
+          <button className="btn" onClick={()=>{navigate('/education');console.log(personalInfo);}}>Next</button>
          </form>
        </div>
        <span style={{"--i":0}}></span>

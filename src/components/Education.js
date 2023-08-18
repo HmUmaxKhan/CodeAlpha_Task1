@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import "./Signup.css"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from 'react-redux';
@@ -7,13 +7,28 @@ import { useSelector } from 'react-redux';
 
 function Education() {
     let navigate = useNavigate();
+    const [info,setInfo] = useState({})
 
+    const singupInfo = useSelector(state=>state.reducer1);
+    const personalInfo = useSelector(state=>state.reducer2);
     const educationInfo = useSelector(state=>state.reducer3);
     const dispatch = useDispatch();
 
     const handleChange= (event) => {
       dispatch(actionCreators.setEducationInfo({[event.target.name]: event.target.value}));
+      setInfo({...singupInfo,...personalInfo,...educationInfo});
      }
+
+     const handleClick = ()=>{
+       navigate("/registered")
+      
+      console.log(info);
+      dispatch(actionCreators.db(info))
+      
+      
+      
+
+    }
 
   return (
     <div>
@@ -33,7 +48,7 @@ function Education() {
             <input type='text' name='skills' id="skills" onChange={handleChange} required/>
             <label htmlFor="skills">Skills</label>
           </div>
-          <button className="btn" onClick={()=>{navigate('/registered');console.log(educationInfo);}}>Next</button>
+          <button className="btn" onClick={handleClick}>Next</button>
          </form>
        </div>
        <span style={{"--i":0}}></span>
